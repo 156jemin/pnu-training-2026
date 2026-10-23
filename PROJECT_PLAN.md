@@ -170,8 +170,17 @@ flowchart TD
 
 - [x] **1단계**: 구글 시트 공유 URL, 시트 ID, 컬럼(17개), 32개 과정 데이터 전수 분석 완료
 - [x] **2단계**: 작업 기획서(`PROJECT_PLAN.md`) 갱신 및 폴더 구조 확정
-- [ ] **3단계**: 메인 페이지(`index.html`, CSS, JS) 제작 및 PapaParse 실시간 로드 검증
-- [ ] **4단계**: 상세 페이지(`detail.html`) 제작 및 과정 상세 렌더링 검증
-- [ ] **5단계**: 시트 데이터 실시간 반영 테스트
-- [ ] **6단계**: GitHub Public 저장소 생성 및 코드 Push, GitHub Pages 활성화
-- [ ] **7단계**: 배포 URL 확인 및 최종 작업 종료
+- [x] **3단계**: 메인 페이지(`index.html`, CSS, JS) 제작 및 PapaParse 실시간 로드 검증
+- [x] **4단계**: 상세 페이지(`detail.html`) 제작 및 과정 상세 렌더링 검증
+- [x] **5단계**: 시트 데이터 실시간 반영 테스트 (사용자 신규 수정 데이터 즉시 동기화 검증 통과)
+- [x] **6단계**: GitHub Public 저장소 생성 및 코드 Push, GitHub Pages 활성화
+- [x] **7단계**: 배포 URL 확인 및 최종 작업 종료
+
+---
+
+## 7. 최종 배포 정보
+
+- **GitHub Public 저장소 주소**: [https://github.com/156jemin/pnu-training-2026](https://github.com/156jemin/pnu-training-2026)
+- **GitHub Pages 배포 웹사이트 주소**: [https://156jemin.github.io/pnu-training-2026/](https://156jemin.github.io/pnu-training-2026/)
+- **상세 페이지 예시 URL**: [https://156jemin.github.io/pnu-training-2026/detail.html?id=PNU-2026-001](https://156jemin.github.io/pnu-training-2026/detail.html?id=PNU-2026-001)
+- **연동 구글 스프레드시트**: [https://docs.google.com/spreadsheets/d/1AnF5bq0evawE9FnfA6QiyEq50rLtkSNR0tgggCkuGBk/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/1AnF5bq0evawE9FnfA6QiyEq50rLtkSNR0tgggCkuGBk/edit?gid=0#gid=0)
