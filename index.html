@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 부산대학교 직무연수 포털</title>
+  <meta name="description" content="2026년도 국립 부산대학교 교직원 직무연수 32개 전 과정의 일정, 커리큘럼, 신청 정보를 실시간으로 안내합니다.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- 헤더 (Global Navigation Bar) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-area" title="2026 부산대학교 직무연수 포털 홈">
+        <div class="brand-emblem" aria-hidden="true">PNU</div>
+        <div class="brand-text">
+          <span class="brand-title">2026 직무연수 포털</span>
+          <span class="brand-sub">국립 부산대학교 교직원 역량개발</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- 구글 시트 실시간 연동 상태 표시 -->
+        <div class="sync-status" id="syncBadge" title="구글 스프레드시트 데이터 실시간 동기화 상태">
+          <span class="sync-dot"></span>
+          <span id="syncText">연결 확인 중...</span>
+        </div>
+
+        <button type="button" class="btn-icon" id="refreshBtn" title="구글 시트 실시간 데이터 새로고침" aria-label="새로고침">
+          🔄
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 히어로 브리핑 섹션 -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span></span>
+          2026 Pusan National University Staff Development
+        </div>
+        <h1 class="hero-title">2026 부산대학교 직무연수 종합 안내</h1>
+        <p class="hero-subtitle">
+          미래 교육과 대학 혁신을 선도하는 부산대학교 교직원 역량 강화 플랫폼.<br>
+          구글 스프레드시트와 실시간 연동되어 32개 전 과정의 최신 일정과 신청 정보를 제공합니다.
+        </p>
+
+        <!-- 핵심 메트릭 브리핑 (4종) -->
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-value accent-blue tabular-nums" id="metricTotal">32개</div>
+            <div class="metric-label">총 연수 과정</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value accent-gold tabular-nums" id="metricMandatory">-</div>
+            <div class="metric-label">법정의무·필수 과정</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value tabular-nums" id="metricOnline">-</div>
+            <div class="metric-label">온라인·상시 과정</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value tabular-nums" id="metricInPerson">-</div>
+            <div class="metric-label">집합·실습 과정</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 검색 및 필터 컨트롤 섹션 -->
+    <section class="controls-section">
+      <div class="container">
+        <!-- 대형 검색창 -->
+        <div class="search-bar-wrap">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            class="search-input"
+            id="searchInput"
+            placeholder="연수 과정명, 코드(PNU-2026-...), 담당부서, 키워드로 검색해보세요"
+            aria-label="연수 검색창"
+            autocomplete="off"
+          >
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="검색어 지우기">✕</button>
+        </div>
+
+        <!-- 1순위 핵심: 분야별 탭 필터 (10개 분야 + 전체) -->
+        <div class="category-tabs-wrap">
+          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="연수 분야 선택">
+            <!-- JavaScript에서 동적으로 카운트와 함께 렌더링 -->
+          </div>
+        </div>
+
+        <!-- 2차 복합 필터 드롭다운 및 정렬 -->
+        <div class="filters-bar">
+          <div class="filter-selects-group">
+            <!-- 대상 필터 -->
+            <div class="select-wrap">
+              <select class="filter-select" id="targetFilter" aria-label="대상 선택">
+                <option value="all">전체 대상</option>
+                <option value="전 직원">전 직원</option>
+                <option value="실무자">실무자</option>
+                <option value="관리자">관리자</option>
+                <option value="신규자">신규자</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+
+            <!-- 이수구분 필터 -->
+            <div class="select-wrap">
+              <select class="filter-select" id="typeFilter" aria-label="이수구분 선택">
+                <option value="all">전체 이수구분</option>
+                <option value="필수">필수 과정</option>
+                <option value="권장">권장 과정</option>
+                <option value="선택">선택 과정</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+
+            <!-- 교육방식 필터 -->
+            <div class="select-wrap">
+              <select class="filter-select" id="methodFilter" aria-label="교육방식 선택">
+                <option value="all">전체 교육방식</option>
+                <option value="온라인">💻 온라인</option>
+                <option value="집합">🏢 집합(대면)</option>
+                <option value="혼합">🔄 혼합(블렌디드)</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+
+            <!-- 신청상태 필터 -->
+            <div class="select-wrap">
+              <select class="filter-select" id="statusFilter" aria-label="신청상태 선택">
+                <option value="all">전체 신청상태</option>
+                <option value="open">접수중</option>
+                <option value="always">상시 접수</option>
+                <option value="upcoming">접수 예정</option>
+                <option value="closed">접수 마감</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+
+          <!-- 정렬 셀렉트 -->
+          <div class="sort-group">
+            <div class="select-wrap">
+              <select class="filter-select" id="sortSelect" aria-label="정렬 방식 선택">
+                <option value="code-asc">과정코드 순</option>
+                <option value="hours-desc">교육시간 긴 순</option>
+                <option value="hours-asc">교육시간 짧은 순</option>
+                <option value="title-asc">과정명 가나다 순</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 활성 필터 태그 (Chips) -->
+        <div class="active-chips-bar" id="activeChipsBar"></div>
+
+        <!-- 검색 결과 건수 안내 -->
+        <div class="result-info-bar">
+          <div class="result-count" id="resultCount">연수 과정을 불러오는 중입니다...</div>
+        </div>
+
+        <!-- 연수 카드 그리드 컨테이너 -->
+        <div class="courses-grid" id="coursesGrid" aria-live="polite">
+          <!-- 스켈레톤 및 연수 카드가 자바스크립트로 렌더링됩니다 -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 (Footer) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>국립 부산대학교 직무연수 포털</h3>
+          <p>
+            부산대학교 금정구 부산대학로63번길 2 (장전동) | 본 웹사이트는 구글 스프레드시트와 실시간 연동되어 최신 직무연수 정보를 교직원 여러분께 제공합니다.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4 style="color: #ffffff; font-size: 0.9rem; margin-bottom: 8px;">주요 부서 연락처</h4>
+            <p style="font-size: 0.8rem; line-height: 1.8;">
+              인재개발원: 051-510-1231<br>
+              정보화본부: 051-510-2001<br>
+              총무과: 051-510-1211<br>
+              재무과: 051-510-1261
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pusan National University. All rights reserved.</span>
+        <span>배포: GitHub Pages | 실시간 데이터 소스: Google Sheets GViz</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CSV 파싱 라이브러리 PapaParse (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- 모듈 스크립트 로드 -->
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

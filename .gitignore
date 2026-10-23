@@ -1,0 +1,7 @@
+# Temporary & scratch files
+*.py
+*.csv
+*.json
+!package.json
+scratch/
+.system_generated/

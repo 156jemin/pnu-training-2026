@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연수 과정 상세 안내 - 2026 부산대학교 직무연수 포털</title>
+  <meta name="description" content="부산대학교 직무연수 세부 정보, 커리큘럼, 학습목표 및 신청 안내">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+
+  <!-- 헤더 (Global Navigation Bar) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-area" title="2026 부산대학교 직무연수 포털 홈">
+        <div class="brand-emblem" aria-hidden="true">PNU</div>
+        <div class="brand-text">
+          <span class="brand-title">2026 직무연수 포털</span>
+          <span class="brand-sub">국립 부산대학교 교직원 역량개발</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- 구글 시트 실시간 연동 상태 표시 -->
+        <div class="sync-status" id="syncBadge" title="구글 스프레드시트 데이터 실시간 동기화 상태">
+          <span class="sync-dot"></span>
+          <span id="syncText">연결 확인 중...</span>
+        </div>
+
+        <button type="button" class="btn-icon" id="refreshBtn" title="구글 시트 실시간 데이터 새로고침" aria-label="새로고침">
+          🔄
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 상세 컨텐츠 컨테이너 -->
+  <main class="container detail-main" id="detailContainer">
+    <!-- 자바스크립트로 스켈레톤 및 연수 상세 정보가 렌더링됩니다 -->
+  </main>
+
+  <!-- 토스트 알림 (링크 복사 등) -->
+  <div class="toast-notice" id="toastNotice" role="alert" aria-live="assertive"></div>
+
+  <!-- 푸터 (Footer) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>국립 부산대학교 직무연수 포털</h3>
+          <p>
+            부산대학교 금정구 부산대학로63번길 2 (장전동) | 본 웹사이트는 구글 스프레드시트와 실시간 연동되어 최신 직무연수 정보를 교직원 여러분께 제공합니다.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4 style="color: #ffffff; font-size: 0.9rem; margin-bottom: 8px;">주요 부서 연락처</h4>
+            <p style="font-size: 0.8rem; line-height: 1.8;">
+              인재개발원: 051-510-1231<br>
+              정보화본부: 051-510-2001<br>
+              총무과: 051-510-1211<br>
+              재무과: 051-510-1261
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pusan National University. All rights reserved.</span>
+        <span>배포: GitHub Pages | 실시간 데이터 소스: Google Sheets GViz</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CSV 파싱 라이브러리 PapaParse (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- 모듈 스크립트 로드 -->
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>
